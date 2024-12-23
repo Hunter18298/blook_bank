@@ -1,0 +1,77 @@
+{% extends 'blood/adminbase.html' %} {% block content %} {% load widget_tweaks
+%} {%load static%}
+<head>
+  <style>
+    .label {
+      color: white;
+      padding: 8px;
+    }
+
+    .success {
+      background-color: #4caf50;
+    } /* Green */
+    .info {
+      background-color: #2196f3;
+    } /* Blue */
+    .warning {
+      background-color: #ff9800;
+    } /* Orange */
+    .danger {
+      background-color: #f44336;
+    } /* Red */
+    .other {
+      background-color: #e7e7e7;
+      color: black;
+    } /* Gray */
+  </style>
+</head>
+<br /><br />
+<div class="container">
+  <h4 class="text-center">مێژووی داواکاری خوێن</h4>
+  <br />
+  {% if message %}
+  <h5 class="text-center" style="color: red">{{message}}</h5>
+  <br />
+  {% else %} {% endif %}
+  <table class="table table-light table-hover table-bordered table-striped">
+    <thead class="bg-info">
+      <tr>
+        <th scope="col">ناوی نەخۆش</th>
+        <th scope="col">تەمەن</th>
+
+        <th scope="col">هۆکار</th>
+        <th scope="col">گرووپی خوێن</th>
+        <th scope="col">یەکە (بە ml)</th>
+        <th scope="col">بەروار</th>
+        <th scope="col">بار</th>
+        <th scope="col">باری کۆگا</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for t in requests %}
+      <tr>
+        <td>{{t.patient_name}}</td>
+        <td>{{t.patient_age}}</td>
+
+        <td>{{t.reason}}</td>
+        <td>{{t.bloodgroup}}</td>
+        <td>{{t.unit}}</td>
+        <td>{{t.date}}</td>
+        {% if t.status == 'Approved' %}
+        <td><span class="label warning"> پەسەندکردن</span></td>
+        <td>
+          <span class="label warning">
+            {{t.unit}} یەکە کەم دەکرێتەوە لە کۆگا</span
+          >
+        </td>
+        {% else %}
+        <td><span class="label success">ڕەتکردنەوە</span></td>
+        <td><span class="label success"> 0 یەکە کەم کرایەوە لە کۆگا</span></td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock content %}

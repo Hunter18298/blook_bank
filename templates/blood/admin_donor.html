@@ -1,0 +1,55 @@
+{% extends 'blood/adminbase.html' %} {% block content %} {% load widget_tweaks
+%} {%load static%} <br /><br />
+<div class="container">
+  <h4 class="text-center">زانیاری خوێن بەخش</h4>
+  <br />
+  <table class="table table-light table-hover table-bordered table-striped">
+    <thead class="bg-info">
+      <tr>
+        <th scope="col">ناو</th>
+        <th scope="col">پرۆفایل</th>
+        <th scope="col">گرووپی خوێن</th>
+        <th scope="col">ناونیشان</th>
+        <th scope="col">ژمارەی مۆبایل</th>
+        <th class="text-right">کردارەکان</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for t in donors %}
+      <tr>
+        <td>{{t.get_name}}</td>
+        <td>
+          <img
+            src="{% static t.profile_pic.url %}"
+            alt="Profile Pic"
+            height="40px"
+            width="40px"
+          />
+        </td>
+        <td>{{t.bloodgroup}}</td>
+        <td>{{t.address}}</td>
+        <td>{{t.mobile}}</td>
+
+        <td class="text-right">
+          <button class="btn btn-primary badge-pill" style="width: 80px">
+            <a
+              style="text-decoration: none; color: white"
+              href="{% url 'update-donor' t.id  %}"
+              >دەستکاری</a
+            >
+          </button>
+          <button class="btn btn-danger badge-pill" style="width: 80px">
+            <a
+              style="text-decoration: none; color: white"
+              href="{% url 'delete-donor' t.id  %}"
+              >سڕینەوە</a
+            >
+          </button>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock content %}
