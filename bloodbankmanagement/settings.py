@@ -25,9 +25,9 @@ MEDIA_ROOT=os.path.join(BASE_DIR,'static')
 SECRET_KEY = '+zy!9k=9pql5gz9bkqjore)k6r!%w0atk(@(!(!zvp5e(t2i8n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['blood.streamzone.krd','localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['blood.streamzone.krd', 'localhost', '127.0.0.1']
 
 
 # Application definition
