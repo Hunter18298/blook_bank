@@ -55,7 +55,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-CSRF_COOKIE_SECURE=False
+CSRF_COOKIE_SECURE=True
+SESSION_COOKIE_SECURE = True
 ROOT_URLCONF = 'bloodbankmanagement.urls'
 
 TEMPLATES = [
