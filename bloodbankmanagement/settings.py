@@ -55,8 +55,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-CSRF_COOKIE_SECURE=True
-SESSION_COOKIE_SECURE = True
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_HSTS_SECONDS = 3600  # Enable HTTP Strict Transport Security (HSTS)
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True  # Apply HSTS to subdomains
+SECURE_HSTS_PRELOAD = True  # Preload HSTS
 ROOT_URLCONF = 'bloodbankmanagement.urls'
 
 TEMPLATES = [
